@@ -1,6 +1,6 @@
 # Ramp Frontend Challenge
 
-This is my submission for the Ramp Frontend Challenge for Software Engineer (Frontend). The project is deployed on [CodeSandbox]([link](https://codesandbox.io/p/github/SavioDCosta/ramp-frontend-challenge).
+This is my submission for the Ramp Frontend Challenge for the Software Engineer (Frontend) role. The project is deployed on [CodeSandbox](https://codesandbox.io/p/github/SavioDCosta/ramp-frontend-challenge).
 
 ## Run Project
 
