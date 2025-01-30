@@ -5,8 +5,11 @@ export default function App(): JSX.Element {
 
   const getFlag = async (): Promise<void> => {
     try {
+      // const res = await fetch(
+      //   "https://wgg522pwivhvi5gqsn675gth3q0otdja.lambda-url.us-east-1.on.aws/777269",
+      // );
       const res = await fetch(
-        "https://wgg522pwivhvi5gqsn675gth3q0otdja.lambda-url.us-east-1.on.aws/777269",
+        "https://wgg522pwivhvi5gqsn675gth3q0otdja.lambda-url.us-east-1.on.aws/6c6174",
       );
       if (res.ok) {
         const data = await res.text();
@@ -75,6 +78,65 @@ export default function App(): JSX.Element {
     </div>
   );
 }
+
+/*
+Script used to to get the URL in step 2
+
+import requests
+from bs4 import BeautifulSoup
+
+# URL provided in the challenge
+url = "https://tns4lpgmziiypnxxzel5ss5nyu0nftol.lambda-url.us-east-1.on.aws/challenge"
+
+# Fetch the webpage content
+response = requests.get(url)
+if response.status_code != 200:
+    print(f"Failed to retrieve the page. Status code: {response.status_code}")
+    exit()
+
+html_content = response.text
+
+# Parse the HTML content
+soup = BeautifulSoup(html_content, 'html.parser')
+
+# Debugging: Print a sample of the HTML structure to verify
+print("Full HTML Content Preview:")
+print(soup.prettify()[:2000])  # Print first 2000 characters
+
+# Initialize the hidden URL
+hidden_url = ""
+
+# Find all <b> tags with class "ref" inside the expected structure
+for section in soup.find_all('section', attrs={'data-id': True}):  # Find all sections
+    for article in section.find_all('article', attrs={'data-class': True}):  # Nested articles
+        for div in article.find_all('div', attrs={'data-tag': True}):  # Nested spans
+            for b_tag in div.find_all('b', class_='ref'):  # Find <b> tags with class 'ref'
+                value = b_tag.get('value')  # Extract the 'value' attribute
+                if value:
+                    hidden_url += value
+                else:
+                    hidden_url += b_tag.text.strip()  # Use text content as fallback
+
+# Debugging: Print extracted hidden URL
+print(f"\nExtracted Hidden URL: {hidden_url}")
+
+# Validate URL format before making a request
+if not hidden_url.startswith("http"):
+    print("Extracted URL is invalid or empty. Check parsing logic.")
+    exit()
+
+# Accessing the hidden URL
+try:
+    response = requests.get(hidden_url)
+    if response.status_code == 200:
+        print("\nSuccessfully accessed the hidden URL.")
+        print("Response Content:")
+        print(response.text[:500])  # Print first 500 characters of the response
+    else:
+        print(f"\nFailed to access the hidden URL. Status code: {response.status_code}")
+except requests.exceptions.RequestException as e:
+    print(f"\nError accessing the hidden URL: {e}")
+*/
 
 /*
 Script used to to get the URL in step 2
